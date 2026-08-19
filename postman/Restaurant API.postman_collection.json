@@ -21,10 +21,10 @@
           }
         },
         "url": {
-          "raw": "https://zo56u8erck.execute-api.us-east-1.amazonaws.com/dev/",
+          "raw": "https://{your-api-id}.execute-api.us-east-1.amazonaws.com/dev/",
           "protocol": "https",
           "host": [
-            "zo56u8erck",
+            "{your-api-id}",
             "execute-api",
             "us-east-1",
             "amazonaws",
@@ -44,10 +44,10 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "https://zo56u8erck.execute-api.us-east-1.amazonaws.com/dev/",
+          "raw": "https://{your-api-id}.execute-api.us-east-1.amazonaws.com/dev/",
           "protocol": "https",
           "host": [
-            "zo56u8erck",
+            "{your-api-id}",
             "execute-api",
             "us-east-1",
             "amazonaws",
@@ -67,10 +67,10 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "https://zo56u8erck.execute-api.us-east-1.amazonaws.com/dev/75f86635-34ed-4d83-b66e-a88e568ca93b",
+          "raw": "https://{your-api-id}.execute-api.us-east-1.amazonaws.com/dev/75f86635-34ed-4d83-b66e-a88e568ca93b",
           "protocol": "https",
           "host": [
-            "zo56u8erck",
+            "{your-api-id}",
             "execute-api",
             "us-east-1",
             "amazonaws",
@@ -99,10 +99,10 @@
           }
         },
         "url": {
-          "raw": "https://zo56u8erck.execute-api.us-east-1.amazonaws.com/dev/31f46629-9a05-44f9-a103-8834f3d9cbc4",
+          "raw": "https://{your-api-id}.execute-api.us-east-1.amazonaws.com/dev/31f46629-9a05-44f9-a103-8834f3d9cbc4",
           "protocol": "https",
           "host": [
-            "zo56u8erck",
+            "{your-api-id}",
             "execute-api",
             "us-east-1",
             "amazonaws",
@@ -122,10 +122,10 @@
         "method": "DELETE",
         "header": [],
         "url": {
-          "raw": "https://zo56u8erck.execute-api.us-east-1.amazonaws.com/dev/31f46629-9a05-44f9-a103-8834f3d9cbc4",
+          "raw": "https://{your-api-id}.execute-api.us-east-1.amazonaws.com/dev/31f46629-9a05-44f9-a103-8834f3d9cbc4",
           "protocol": "https",
           "host": [
-            "zo56u8erck",
+            "{your-api-id}",
             "execute-api",
             "us-east-1",
             "amazonaws",
