@@ -1,0 +1,143 @@
+{
+  "info": {
+    "_postman_id": "cece15c6-6e19-41d1-b67f-b4188ac0047f",
+    "name": "Restaurant API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "30531286"
+  },
+  "item": [
+    {
+      "name": "Create Restaurant",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"entityType\": \"restaurant\",\r\n  \"name\": \"Pizza Palace\",\r\n  \"address\": \"Main Shahrah-e-Faisal\",\r\n  \"city\": \"Karachi\",\r\n  \"phone\": \"+92-300-1234567\",\r\n  \"email\": \"info@pizzapalace.com\",\r\n  \"cuisineType\": \"Italian\",\r\n  \"openingHours\": \"11:00 AM - 11:00 PM\",\r\n  \"rating\": 4.5,\r\n  \"totalReviews\": 250,\r\n  \"isActive\": true\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://zo56u8erck.execute-api.us-east-1.amazonaws.com/dev/",
+          "protocol": "https",
+          "host": [
+            "zo56u8erck",
+            "execute-api",
+            "us-east-1",
+            "amazonaws",
+            "com"
+          ],
+          "path": [
+            "dev",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get All Restaurants",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://zo56u8erck.execute-api.us-east-1.amazonaws.com/dev/",
+          "protocol": "https",
+          "host": [
+            "zo56u8erck",
+            "execute-api",
+            "us-east-1",
+            "amazonaws",
+            "com"
+          ],
+          "path": [
+            "dev",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Restaurant",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://zo56u8erck.execute-api.us-east-1.amazonaws.com/dev/75f86635-34ed-4d83-b66e-a88e568ca93b",
+          "protocol": "https",
+          "host": [
+            "zo56u8erck",
+            "execute-api",
+            "us-east-1",
+            "amazonaws",
+            "com"
+          ],
+          "path": [
+            "dev",
+            "75f86635-34ed-4d83-b66e-a88e568ca93b"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update Restaurant",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"entityType\": \"restaurant\",\r\n  \"name\": \"Karachi Biryani House\",\r\n  \"address\": \"Main Shahrah-e-Faisal\",\r\n  \"city\": \"Karachi\",\r\n  \"phone\": \"+92-300-1234567\",\r\n  \"email\": \"contact@biryanihouse.com\",\r\n  \"cuisineType\": \"Italian\",\r\n  \"openingHours\": \"11:00 AM - 11:00 PM\",\r\n  \"rating\": 4.5,\r\n  \"totalReviews\": 1200,\r\n  \"isActive\": true\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://zo56u8erck.execute-api.us-east-1.amazonaws.com/dev/31f46629-9a05-44f9-a103-8834f3d9cbc4",
+          "protocol": "https",
+          "host": [
+            "zo56u8erck",
+            "execute-api",
+            "us-east-1",
+            "amazonaws",
+            "com"
+          ],
+          "path": [
+            "dev",
+            "31f46629-9a05-44f9-a103-8834f3d9cbc4"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete Restaurant",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "https://zo56u8erck.execute-api.us-east-1.amazonaws.com/dev/31f46629-9a05-44f9-a103-8834f3d9cbc4",
+          "protocol": "https",
+          "host": [
+            "zo56u8erck",
+            "execute-api",
+            "us-east-1",
+            "amazonaws",
+            "com"
+          ],
+          "path": [
+            "dev",
+            "31f46629-9a05-44f9-a103-8834f3d9cbc4"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

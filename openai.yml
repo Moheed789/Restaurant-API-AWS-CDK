@@ -1,0 +1,263 @@
+openapi: 3.0.3
+info:
+  title: Restaurant API
+  description: REST API for creating, reading, updating, listing, and deleting restaurants.
+  version: 1.0.0
+
+servers:
+  - url: https://{apiId}.execute-api.{region}.amazonaws.com/{stage}
+    description: AWS API Gateway
+    variables:
+      apiId:
+        default: your-api-id
+        description: API Gateway REST API ID
+      region:
+        default: us-east-1
+        description: AWS region where the API is deployed
+      stage:
+        default: dev
+        description: CDK deployment stage
+
+tags:
+  - name: Restaurants
+    description: Restaurant CRUD operations
+
+paths:
+  /:
+    post:
+      tags:
+        - Restaurants
+      summary: Create a restaurant
+      operationId: createRestaurant
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RestaurantRequest'
+            example:
+              entityType: restaurant
+              name: The Spice Garden
+              address: 12 Main Street
+              city: Lahore
+              phone: '+92-300-1234567'
+              email: contact@spicegarden.example
+              cuisineType: Pakistani
+              openingHours: 10:00 AM - 11:00 PM
+              rating: 4.5
+              totalReviews: 120
+              isActive: true
+      responses:
+        '201':
+          description: Restaurant created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Restaurant'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+    get:
+      tags:
+        - Restaurants
+      summary: List all restaurants
+      operationId: listRestaurants
+      responses:
+        '200':
+          description: Restaurants returned successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Restaurant'
+        '404':
+          description: No restaurants found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /{restaurantId}:
+    parameters:
+      - $ref: '#/components/parameters/RestaurantId'
+
+    get:
+      tags:
+        - Restaurants
+      summary: Get a restaurant by ID
+      operationId: getRestaurant
+      responses:
+        '200':
+          description: Restaurant returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Restaurant'
+        '404':
+          description: Restaurant not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+    put:
+      tags:
+        - Restaurants
+      summary: Update a restaurant
+      operationId: updateRestaurant
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RestaurantRequest'
+            example:
+              entityType: restaurant
+              name: The Spice Garden Updated
+              address: 14 Main Street
+              city: Lahore
+              phone: '+92-300-1234567'
+              email: contact@spicegarden.example
+              cuisineType: Pakistani
+              openingHours: 10:00 AM - 11:30 PM
+              rating: 4.7
+              totalReviews: 135
+              isActive: true
+      responses:
+        '200':
+          description: Restaurant updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Restaurant'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+    delete:
+      tags:
+        - Restaurants
+      summary: Delete a restaurant
+      operationId: deleteRestaurant
+      responses:
+        '200':
+          description: Restaurant deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+              example:
+                message: Restaurant deleted successfully
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+components:
+  parameters:
+    RestaurantId:
+      name: restaurantId
+      in: path
+      required: true
+      description: Unique restaurant identifier returned when a restaurant is created
+      schema:
+        type: string
+        format: uuid
+      example: 3f0f2f08-3b1f-4cb4-8c42-cf5a1fd8c123
+
+  schemas:
+    RestaurantRequest:
+      type: object
+      required:
+        - entityType
+        - name
+        - address
+        - city
+        - phone
+        - email
+        - cuisineType
+        - openingHours
+        - rating
+        - totalReviews
+        - isActive
+      properties:
+        entityType:
+          type: string
+          enum:
+            - restaurant
+        name:
+          type: string
+        address:
+          type: string
+        city:
+          type: string
+        phone:
+          type: string
+        email:
+          type: string
+          format: email
+        cuisineType:
+          type: string
+        openingHours:
+          type: string
+        rating:
+          type: number
+          format: float
+          minimum: 0
+          maximum: 5
+        totalReviews:
+          type: integer
+          minimum: 0
+        isActive:
+          type: boolean
+
+    Restaurant:
+      allOf:
+        - $ref: '#/components/schemas/RestaurantRequest'
+        - type: object
+          required:
+            - restaurantId
+            - createdAt
+            - updatedAt
+          properties:
+            restaurantId:
+              type: string
+              format: uuid
+            createdAt:
+              type: integer
+              description: Unix timestamp in seconds
+            updatedAt:
+              type: integer
+              description: Unix timestamp in seconds
+
+    MessageResponse:
+      type: object
+      required:
+        - message
+      properties:
+        message:
+          type: string
+
+  responses:
+    BadRequest:
+      description: Invalid request body or missing restaurant ID
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/MessageResponse'
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/MessageResponse'
+          example:
+            message: Internal Server Error

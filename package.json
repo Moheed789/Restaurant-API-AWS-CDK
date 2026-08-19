@@ -1,0 +1,22 @@
+{
+  "name": "restaurant-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.1111.0",
+    "@aws-sdk/lib-dynamodb": "^3.1111.0",
+    "@hapi/joi": "^17.1.1",
+    "aws-cdk-lib": "^2.265.0",
+    "constructs": "^10.8.1",
+    "dayjs": "^1.11.23",
+    "uuid": "^14.0.1"
+  }
+}
